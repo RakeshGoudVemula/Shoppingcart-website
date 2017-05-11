@@ -6,12 +6,13 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="" key="selection"/>
+		<item value="path" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="path"/>
 			<item value="saved"/>
 			<item value="Saved"/>
 			<item value="Successfully Saved"/>
@@ -19,7 +20,6 @@
 			<item value="session"/>
 			<item value="&#x09;&#x09;&lt;jsp:include page=&quot;Footer.jsp&quot;&gt;&lt;/jsp:include&gt;"/>
 			<item value="green"/>
-			<item value="Cate"/>
 		</list>
 		<list key="replacehistory">
 			<item value="Suppliers"/>

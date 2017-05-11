@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.niit.shoppingcart.daoimpl.CategoryDAOImpl"/>
 <fullyQualifiedTypeName name="java.util.Iterator"/>
 <fullyQualifiedTypeName name="com.niit.shoppingcart.dao.AddressDAO"/>
 <fullyQualifiedTypeName name="com.niit.shoppingcart.domain.Address"/>
@@ -22,7 +21,6 @@
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="com.niit.shoppingcart.dao.UserDAO"/>
 <fullyQualifiedTypeName name="com.niit.controller.CategoryController"/>
-<fullyQualifiedTypeName name="org.hibernate.Query"/>
 <fullyQualifiedTypeName name="javax.persistence.Transient"/>
 <fullyQualifiedTypeName name="com.niit.shoppingcart.domain.User"/>
 <fullyQualifiedTypeName name="com.sun.corba.se.impl.javax.rmi.CORBA.Util"/>
@@ -43,11 +41,8 @@
 <fullyQualifiedTypeName name="com.niit.shoppingcart.domain.Category"/>
 <fullyQualifiedTypeName name="com.niit.shoppingcart.domain.Supplier"/>
 <fullyQualifiedTypeName name="ch.qos.logback.core.util.FileUtil"/>
-<fullyQualifiedTypeName name="org.slf4j.Logger"/>
-<fullyQualifiedTypeName name="org.slf4j.LoggerFactory"/>
 <fullyQualifiedTypeName name="org.springframework.web.multipart.MultipartFile"/>
 <fullyQualifiedTypeName name="ch.qos.logback.classic.pattern.Util"/>
-<fullyQualifiedTypeName name="com.niit.shoppingcart.util.FileUtil"/>
 <fullyQualifiedTypeName name="org.springframework.web.servlet.mvc.support.RedirectAttributes"/>
 <fullyQualifiedTypeName name="org.springframework.ui.ModelMap"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
@@ -60,4 +55,9 @@
 <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
 <fullyQualifiedTypeName name="com.niit.shoppingcart.dao.ProductDAO"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="com.niit.shoppingcart.util.FileUtil"/>
+<fullyQualifiedTypeName name="org.slf4j.Logger"/>
+<fullyQualifiedTypeName name="org.slf4j.LoggerFactory"/>
+<fullyQualifiedTypeName name="org.hibernate.Query"/>
+<fullyQualifiedTypeName name="org.hibernate.HibernateException"/>
 </qualifiedTypeNameHistroy>
