@@ -1,0 +1,148 @@
+package com.niit.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.niit.shoppingcart.dao.CategoryDAO;
+import com.niit.shoppingcart.domain.Category;
+
+import ch.qos.logback.classic.Logger;
+
+@Controller
+public class CategoryController {
+
+	@Autowired
+	HttpSession session;
+	
+	@Autowired
+	CategoryDAO categoryDAO;
+	@Autowired
+	Category category;
+	
+	private static  Logger log = (Logger) LoggerFactory.getLogger(CategoryController.class);
+
+	@RequestMapping("/manage_category_add")
+	public ModelAndView createCategory(@RequestParam("id") String id, @RequestParam("name") String name,
+			@RequestParam("description") String description) {
+		
+		ModelAndView mv = new ModelAndView("Home");
+
+		category.setId(id);
+		category.setName(name);
+		category.setDescription(description);
+		
+		
+		mv.addObject("isAdminClickedCategories", "true");
+		mv.addObject("isAdmin", "true");
+
+
+
+		// Before calling save method,check whether the category id already
+		// exist in db or not
+
+		// if it does not exist ,then only call save method.
+
+		if (categoryDAO.getCategoryByID(id) != null) {
+			mv.addObject("errorMessage", "Category already Exist with the same id" + id);
+			return mv;
+		} 
+		else {
+			categoryDAO.save(category);
+			mv.addObject("cMessage", "Category creation success with id : "+id);
+
+		}
+		return mv;
+
+	}
+	
+	
+	@RequestMapping("/manage_category_delete/{id}")
+	public ModelAndView deleteCategory(@PathVariable("id") String id)
+	{
+		
+		log.debug("Starting of the method deleteCategory");
+		log.debug("You are going to delete " + id);
+		ModelAndView mv = new ModelAndView("forward:/manageCategories");
+		 if( categoryDAO.delete(id))
+		 {
+			 mv.addObject("message", "successfully deleted the category");
+		 }
+		 else
+		 {
+			 mv.addObject("message", "Not able to delte the category");
+		 }
+		 
+			session.setAttribute("categoryList", categoryDAO.list());
+			session.setAttribute("category", category);
+			
+		
+			log.debug("Ending of the method deleteCategory");
+		 
+		 return mv;
+		
+	}
+	
+	
+	//Edit category
+		@RequestMapping("/manage-category-edit/{id}")
+		public ModelAndView editCategory(@PathVariable("id") String id){
+			log.debug("Starting of editCategory");
+			log.info("You are about to edit a category with id : " + id);
+			
+			category = categoryDAO.getCategoryByID(id);
+			
+			//Selected category details we have to store in another instance
+			//i.e., ModelAndView instance
+			ModelAndView mv = new ModelAndView("forward:/manageCategories");
+			mv.addObject("selectedCategory", category);	
+			
+			log.debug("Ending of editCategory");
+
+			return mv;
+		}
+		
+		@RequestMapping("manage-category-edit/manage_category_update")
+		public ModelAndView updateCategory(@RequestParam("cId") String id, @RequestParam("cName") String name,
+				@RequestParam("cDescription") String description) {
+			log.debug("Starting of updateCategory");
+			ModelAndView mv = new ModelAndView("forward:/manageCategories");
+
+			category.setId(id);
+			category.setName(name);
+			category.setDescription(description);
+
+			mv.addObject("isAdminClickedCategories", "true");
+			mv.addObject("isAdmin", "true");
+
+			if (categoryDAO.getCategoryByID(id) == null) {
+				mv.addObject("cMessage", "Category does not exists with id : " + id);
+				return mv;
+			} else {
+				categoryDAO.update(category);
+				mv.addObject("cMessage", "Category updated success with id : " + id);
+
+			}
+
+			// get all categories
+			List<Category> categoryList = categoryDAO.list();
+			// attach to session
+			session.setAttribute("categoryList", categoryList);
+			session.setAttribute("category", category);
+
+			// Before calling save method, check whether category_id already exists
+			// in db
+			// if it does not exist, then only call save method.
+			log.debug("Ending of updateCategory");
+			return mv;
+		}
+
+}

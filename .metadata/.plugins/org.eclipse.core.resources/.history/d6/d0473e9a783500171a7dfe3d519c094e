@@ -1,0 +1,109 @@
+package com.niit.shoppingcart.daoimpl;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.niit.shoppingcart.dao.ProductDAO;
+import com.niit.shoppingcart.domain.Product;
+
+@Repository("productDAO") // To create the singleton instance
+// ProductDAOImpl productDAO = new productDAOImpl()
+@Transactional
+public class ProductDAOImpl implements ProductDAO {
+
+	@Autowired
+	private SessionFactory sessionFactory;
+
+	public ProductDAOImpl(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+
+	private Session getCurrentSession() {
+		return sessionFactory.getCurrentSession();
+	}
+
+	public List<Product> list() {
+		return getCurrentSession().createQuery("from Product").list();
+	}
+
+	public boolean save(Product product) {
+		try {
+			getCurrentSession().save(product);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+
+		return true;
+	}
+
+	public boolean update(Product product) {
+		try {
+			getCurrentSession().update(product);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+
+		return true;
+	}
+
+	public boolean delete(String id) {
+		try {
+			getCurrentSession().delete(getProductByID(id));
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+
+		return true;
+	}
+
+	public Product getProductByID(String id) {
+		// select * from Product where id = ?
+		return (Product) getCurrentSession().get(Product.class, id);
+
+	}
+
+	public Product getProductByName(String name) {
+
+		/*
+		 * return (Product)
+		 * getCurrentSession().createQuery("from Product where name = ?")
+		 * .setString(0, name).uniqueResult();
+		 */
+
+		Query query = getCurrentSession().createQuery("from Product where name =?");
+		query.setString(0, name);
+
+		return (Product) query.uniqueResult();
+
+	}
+
+	/**
+	 * This method will return all the products of the particular category
+	 */
+
+	public List<Product> getAllProductsByCategoryID(String categoryID) {
+
+		Query query = getCurrentSession().createQuery("from Product where categoryID=?");
+		query.setString(0, categoryID);
+
+		return query.list();
+
+	}
+
+	@Override
+	public Product get(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
