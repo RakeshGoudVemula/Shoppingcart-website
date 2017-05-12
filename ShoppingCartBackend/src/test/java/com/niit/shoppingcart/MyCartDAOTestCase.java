@@ -33,16 +33,13 @@ public class MyCartDAOTestCase {
 		myCart = (MyCart) context.getBean("myCart");
 	}
 	@Test
-	public void createMyCartTestCase()
-	{
-		myCart.setId("8956");
+	public void createMyCartTestCase(){
 		myCart.setUser_id("rakesh");
-		myCart.setProduct_name("DELL LAPTOP");
-		myCart.setPrice("50000");
-		myCart.setQuantity("2");
+		myCart.setProduct_name("iWatch");
+		myCart.setPrice(5000.26);
 		boolean flag=myCartDAO.save(myCart);
 		assertEquals("CreateMyCartTestCase", true, flag);
-
+		
 	}
 	
 	

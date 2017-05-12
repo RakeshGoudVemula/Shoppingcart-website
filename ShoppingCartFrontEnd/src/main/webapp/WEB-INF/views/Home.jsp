@@ -4,7 +4,7 @@
 <html>
 <head>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<title>Shopping Cart Web Application</title>
+<title>Electronics Shoppe Store</title>
 <link rel="stylesheet" href="resources/css/bootstrap.css">
 
 <script src="WEB-INF/resources/js/jquery-3.2.0.js"></script>

@@ -1,25 +1,31 @@
 package com.niit.shoppingcart.domain;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
 @Entity
-@Table(name="MyCart")
+@Table(name="MyCART")
 @Component
 public class MyCart {
 	@Id
-	private String id;
+	@GeneratedValue
+	private int id;
 	private String user_id;
 	private String product_name;
-	private String price;
-	private String quantity;
-	public String getId() {
+	private double price;
+	private int quantity;
+	private Date date_added;
+	private String status;
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getUser_id() {
@@ -34,22 +40,32 @@ public class MyCart {
 	public void setProduct_name(String product_name) {
 		this.product_name = product_name;
 	}
-	public String getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
-	public String getQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(String quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public void setStatus(char c) {
-		// TODO Auto-generated method stub
-		
+	public Date getDate_added() {
+		return date_added;
 	}
+	public void setDate_added(Date date_added) {
+		this.date_added = date_added;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
+
 	
 	
 

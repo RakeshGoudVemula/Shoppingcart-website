@@ -6,13 +6,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>eShopee</title>
+<title>Electronics Shoppe Stores</title>
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="Home">ShoppingCart</a>
+			<a class="navbar-brand" href="Home">Electronics Shoppe Store</a>
 		</div>
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="Home">Home</a></li>
@@ -24,7 +24,7 @@
 			</li>
 					</c:forEach>
 				
-			<%-- <li class="dropdown"><a class="dropdown-toggle"
+			<li class="dropdown"><a class="dropdown-toggle"
 				data-toggle="dropdown" href="#">Products <span class="caret"></span></a>
 				<ul class="dropdown-menu">
 
@@ -32,7 +32,7 @@
 						<li><a href="#">${product.name}</a></li>
 
 					</c:forEach>
-				</ul></li> --%>
+				</ul></li>
 		</ul>
 		
 		<ul class="nav navbar-nav navbar-right">

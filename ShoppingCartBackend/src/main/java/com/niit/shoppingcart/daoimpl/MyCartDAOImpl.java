@@ -25,70 +25,69 @@ public class MyCartDAOImpl implements MyCartDAO {
 		this.sessionFactory = sessionFactory;
 	}
 
+	@Override
 	public boolean save(MyCart myCart) {
 
 		try {
 			sessionFactory.getCurrentSession().save(myCart);
 		} catch (Exception e) {
-			// If any exception comes during execute of try block,catch will
-			// execute
+			// if any excpetion comes during execute of try block, catch will
+			// excute
 			e.printStackTrace();
 			return false;
 		}
 		return true;
-	}
-
-	public boolean update(MyCart myCart) {
-		try {
-			sessionFactory.getCurrentSession().update(myCart);
-		} catch (Exception e) {
-			// If any exception comes during execute of try block,catch will
-			// execute
-			e.printStackTrace();
-			return false;
-		}
-		return true;
-
-	}
-
-	public List<MyCart> list() {
-		return sessionFactory.getCurrentSession().createQuery("from MyCart").list();
 	}
 
 	@Override
-	public MyCart get(String id) {
-		// TODO Auto-generated method stub
-		return (MyCart) sessionFactory.getCurrentSession().get(MyCart.class, id);
+	public boolean update(MyCart myCart) {
+
+		try {
+			sessionFactory.getCurrentSession().update(myCart);
+		} catch (Exception e) {
+			// if any excpetion comes during execute of try block, catch will
+			// excute
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public boolean delete(int id) {
+
+		try {
+			sessionFactory.getCurrentSession().delete(getCartById(id));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+
+		return true;
+
 	}
 
 	@Override
 	public List<MyCart> list(String userID) {
 		// TODO Auto-generated method stub
-		return null;
+		return sessionFactory.getCurrentSession().createQuery("from MyCart where user_id=?").setString(0, userID)
+				.list();
 	}
 
 	@Override
-	public boolean delete(MyCart myCart) {
-		// TODO Auto-generated method stub
-		return false;
+	public double getTotalAmount(String userID) {
+
+		return (Double) sessionFactory.getCurrentSession().createQuery("select sum(price) from MyCart where user_id=?")
+				.setString(0, userID).uniqueResult();
+
 	}
 
 	@Override
-	public Long getTotalAmount(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public MyCart getCartById(int id) {
 
-	@Override
-	public MyCart getCart(String userID, String productName) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		return (MyCart) sessionFactory.getCurrentSession().createQuery("from MyCart where id = ?").setInteger(0, id)
+				.uniqueResult();
 
-	@Override
-	public Integer getQuantity(String userID, String productName) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }
