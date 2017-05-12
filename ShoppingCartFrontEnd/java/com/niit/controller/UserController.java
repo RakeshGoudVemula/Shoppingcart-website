@@ -35,7 +35,12 @@ public class UserController {
 	SupplierDAO supplierDAO;
 	@Autowired
 	Supplier supplier;
-	
+
+	@Autowired
+	Product product;
+	@Autowired
+	ProductDAO productDAO;
+
 	@Autowired
 	HttpSession session;
 
@@ -47,34 +52,47 @@ public class UserController {
 		{
 			user = userDAO.get(id);
 			mv.addObject("message", "Welcome" + user.getName());
-
 			mv.addObject("categoryList", categoryDAO.list());
-			mv.addObject("category", categoryDAO);
-			
-			
-			//store id in session
-			session.setAttribute("LoggedInUserID",id);
-
+			mv.addObject("category", category);
+			// store id in session
+			session.setAttribute("LoggedInUserID", id);
 			mv.addObject("supplierList", supplierDAO.list());
-			mv.addObject("supplier", supplierDAO);
+			mv.addObject("supplier", supplier);
 
-			if (user.getRole().equals("Admin")) 
-			{
-				
+			mv.addObject("productList", productDAO.list());
+			mv.addObject("product", product);
+
+			if (user.getRole().equals("ROLE_ADMIN")) {
+
 				mv.addObject("isAdmin", true);
-				session.setAttribute("role","Admin");
-			} 
-			else {
+				session.setAttribute("role", "ROLE_ADMIN");
+			} else {
 				mv.addObject("isAdmin", false);
-				session.setAttribute("role","User");
+				session.setAttribute("role", "ROLE_USER");
 
 			}
 
-		} 
-		else {
+		} else {
 			mv.addObject("message", "Invalid credentials..please try again");
 		}
-		
+
+		return mv;
+	}
+
+	@RequestMapping("/register")
+	public ModelAndView register(@RequestParam("uName") String name, @RequestParam("password") String password,
+			@RequestParam("username") String username, @RequestParam("contact") String contact) {
+		ModelAndView mv = new ModelAndView("/Home");
+
+		user.setName(name);
+		user.setPassword(password);
+		user.setId(username);
+		user.setContact(contact);
+		user.setRole("ROLE_USER");
+		userDAO.save(user);
+
+		mv.addObject("message", "Thank you for registering");
+
 		return mv;
 	}
 

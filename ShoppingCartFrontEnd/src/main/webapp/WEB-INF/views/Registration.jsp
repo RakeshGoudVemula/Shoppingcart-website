@@ -8,13 +8,8 @@
 
 </head>
 <body>
-	<form action="">
-
-		<div class="container">
-			<!-- Registration form - START -->
-			<div class="container">
+	<form action="register">
 				<div class="row">
-					<form role="form">
 						<div class="col-lg-6">
 							<div class="well well-sm">
 								<strong><span class="glyphicon glyphicon-asterisk"></span>Required
@@ -23,21 +18,32 @@
 							<div class="form-group">
 								<label for="InputName">Enter Name</label>
 								<div class="input-group">
-									<input type="text" class="form-control" name="InputName"
-										id="InputName" placeholder="Enter Name" required> <span
+									<input type="text" class="form-control" name="uName"
+										id="uName" placeholder="Enter Name" required> <span
 										class="input-group-addon"><span
 										class="glyphicon glyphicon-asterisk"></span></span>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="InputEmail">Enter Email</label>
+								<label for="InputEmail">Enter UserName</label>
 								<div class="input-group">
-									<input type="email" class="form-control" id="InputEmailFirst"
-										name="InputEmail" placeholder="Enter Email" required>
+									<input type="text" class="form-control" id="username"
+										name="username" placeholder="Enter username" required>
 									<span class="input-group-addon"><span
 										class="glyphicon glyphicon-asterisk"></span></span>
 								</div>
 							</div>
+							
+							<div class="form-group">
+								<label for="InputEmail">Enter Mobile Number</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="contact"
+										name="contact" placeholder="Enter contact Number" required>
+									<span class="input-group-addon"><span
+										class="glyphicon glyphicon-asterisk"></span></span>
+								</div>
+							</div>
+							
 								<div class="input-group"></div>
 								<div class="form-group">
 									<label for="InputEmail">Enter Password</label>
@@ -53,15 +59,8 @@
 							<input type="submit" name="submit" id="submit" value="Submit"
 								class="btn btn-info pull-right">
 						</div>
-					</form>
 
-				</div>
-			</div>
-		</div>
-		</div>
-		<!-- Registration form - END -->
 
-		</div>
 
 	</form>
 </body>

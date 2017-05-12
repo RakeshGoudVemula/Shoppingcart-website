@@ -2,6 +2,7 @@ package com.niit.shoppingcart.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,6 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 @Table(name = "Product")
 @Component
 public class Product implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	@Id
 	private String id;
 	private String name;

@@ -61,9 +61,13 @@ public class CategoryController {
 			return mv;
 		} else {
 			categoryDAO.save(category);
-			mv.addObject("cMessage", "Category creation success with id : " + id);
+			mv.addObject("cMessage", "Category creation success with id : " + id);			
+			mv.addObject("categoryList", categoryDAO.list());
+			mv.addObject("category",category);
 
 		}
+			
+		
 		return mv;
 
 	}
@@ -142,7 +146,9 @@ public class CategoryController {
 		List<Category> categoryList = categoryDAO.list();
 		// attach to session
 		session.setAttribute("categoryList", categoryList);
-		session.setAttribute("category", category);
+		session.setAttribute("category", new Category());
+		
+		
 
 		// Before calling save method, check whether category_id already exists
 		// in db

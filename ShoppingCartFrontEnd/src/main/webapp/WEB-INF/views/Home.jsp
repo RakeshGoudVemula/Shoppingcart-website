@@ -6,7 +6,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <title>Electronics Shoppe Store</title>
 <link rel="stylesheet" href="resources/css/bootstrap.css">
-
 <script src="WEB-INF/resources/js/jquery-3.2.0.js"></script>
 <script src="WEB-INF/resources/js/bootstrap.js"></script>
 
@@ -14,15 +13,22 @@
 <body>
 	<hr color="green">
 	<jsp:include page="Menu.jsp"></jsp:include>
-	
-	<hr>
-	<jsp:include page="AllProducts.jsp"></jsp:include>
+	${message}
+	<c:if test="${isUserClickedCart=='true'}">
+
+		<jsp:include page="MyCart.jsp"></jsp:include>
+	</c:if>
 
 	<c:if test="${isUserAtRoot=='true'}">
 
 		<jsp:include page="Carousel.jsp"></jsp:include>
 
 	</c:if>
+
+
+	<hr>
+	<jsp:include page="AllProducts.jsp"></jsp:include>
+
 
 
 
@@ -55,6 +61,6 @@
 		<jsp:include page="Home.jsp"></jsp:include>
 	</c:if>
 	<jsp:include page="Footer.jsp"></jsp:include>
-	
+
 </body>
 </html>

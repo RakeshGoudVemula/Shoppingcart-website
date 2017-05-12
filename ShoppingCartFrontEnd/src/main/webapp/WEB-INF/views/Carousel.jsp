@@ -16,20 +16,25 @@
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
       <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
     </ol>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
       <div class="item active">
-        <img src="resources/images/mobile.jpg" alt="Mobiles" style="width:100%;">
+        <img src="resources/images/slide2-img.jpg" alt="Mobiles" style="width:100%;">
       </div>
 
       <div class="item">
-        <img src="resources/images/Appliances.jpg" alt="Home Appliances" style="width:100%;">
+        <img src="resources/images/Game.jpg" alt="Home Appliances" style="width:100%;">
       </div>
     
-      <div class="item">
-        <img src="resources/images/Electronics.jpg" alt="Computer Accessories" style="width:100%;">
+     	<div class="item">
+     		<img alt="Gaming" src="resources/images/5.jpg" style="width:100%;">
+     	</div>
+    
+    <div class="item">
+        <img src="resources/images/slide1-img.jpg" alt="gaming" style="width:100%;">
       </div>
     </div>
 

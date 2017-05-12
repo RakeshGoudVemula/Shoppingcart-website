@@ -47,19 +47,19 @@ public class CartController {
 		
 		model.addAttribute("myCart", myCart);
 		
-		String loggedInUserID = (String) session.getAttribute("LoggedInUserID");
+		String loggedInUser = (String) session.getAttribute("loggedInUser");
 		
-		if(loggedInUserID != null){
-			int cartSize = myCartDAO.list(loggedInUserID).size();
+		if(loggedInUser != null){
+			int cartSize = myCartDAO.list(loggedInUser).size();
 			
 			if(cartSize == 0){
 				model.addAttribute("errorMessage", "You do not have any products in your cart!");
 			} else {
 				model.addAttribute("cart", myCart);
-				model.addAttribute("cartList", myCartDAO.list(loggedInUserID));
+				model.addAttribute("cartList", myCartDAO.list(loggedInUser));
 				model.addAttribute("isUserClickedCart", "true");
-				model.addAttribute("totalAmount", myCartDAO.getTotalAmount(loggedInUserID));
-				long totalAmount = (long) myCartDAO.getTotalAmount(loggedInUserID);
+				model.addAttribute("totalAmount", myCartDAO.getTotalAmount(loggedInUser));
+				long totalAmount = (long) myCartDAO.getTotalAmount(loggedInUser);
 				session.setAttribute("totalAmount", totalAmount);
 				session.setAttribute("isAdmin", "false");
 				//System.out.println(totalAmount);
@@ -81,9 +81,9 @@ public class CartController {
 		myCart.setProduct_name(product.getName());
 		myCart.setPrice(product.getPrice());
 		
-		String LoggedInUserID = (String) session.getAttribute("LoggedInUserID");
+		String loggedInUser = (String) session.getAttribute("loggedInUser");
 		
-		myCart.setUser_id(LoggedInUserID);
+		myCart.setUser_id(loggedInUser);
 		myCart.setStatus("N");
 		myCart.setQuantity(1);
 		myCart.setDate_added(new Date(System.currentTimeMillis()));

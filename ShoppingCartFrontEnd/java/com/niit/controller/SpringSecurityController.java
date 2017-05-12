@@ -19,15 +19,22 @@ import com.niit.shoppingcart.dao.CategoryDAO;
 import com.niit.shoppingcart.dao.MyCartDAO;
 import com.niit.shoppingcart.dao.ProductDAO;
 import com.niit.shoppingcart.dao.SupplierDAO;
+import com.niit.shoppingcart.dao.UserDAO;
 import com.niit.shoppingcart.domain.Category;
 import com.niit.shoppingcart.domain.MyCart;
 import com.niit.shoppingcart.domain.Product;
 import com.niit.shoppingcart.domain.Supplier;
+import com.niit.shoppingcart.domain.User;
 
 @Controller
 public class SpringSecurityController {
 	
 	public static Logger log = LoggerFactory.getLogger(SpringSecurityController.class);
+	
+	@Autowired
+	UserDAO userDAO;
+	@Autowired
+	User user;
 	
 	@Autowired 
 	private HttpSession session;
@@ -85,23 +92,40 @@ public class SpringSecurityController {
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 			String userID = auth.getName();
 			session.setAttribute("loggedInUser", userID);
+			
+			
+			user = userDAO.get(userID);
+			mv.addObject("message", "Welcome" + user.getName());
+			mv.addObject("categoryList", categoryDAO.list());
+			mv.addObject("category", category);			
+			//store id in session
+			mv.addObject("supplierList", supplierDAO.list());
+			mv.addObject("supplier", supplier);
+			
+			mv.addObject("productList",productDAO.list());
+			mv.addObject("product",product);
 
 			if (request.isUserInRole("ROLE_ADMIN")) {
 
+				session.setAttribute("isAdmin", "true");
+				mv.addObject("isAdmin", "true");
+				session.setAttribute("role","ROLE_ADMIN");
 				session.setAttribute("isAdmin", true);
+				
 
 			} else {
 
 				session.setAttribute("isAdmin", false);
+				session.setAttribute("isUser", "true");
+				session.setAttribute("myCart", myCart);			
+				mv.addObject("isAdmin", false);
+				session.setAttribute("role","ROLE_USER");			
 				
-				session.setAttribute("myCart", myCart);
 				// Fetch the myCart list based on user ID
 				/*List<MyCart> cartList = cartDAO.list(userID);
 				session.setAttribute("cartList", cartList);
 				session.setAttribute("cartSize", cartList.size());
 				session.setAttribute("totalAmount", cartDAO.getTotalAmount(userID));*/
-
-				
 
 			}
 			log.debug("Ending of the method validate");

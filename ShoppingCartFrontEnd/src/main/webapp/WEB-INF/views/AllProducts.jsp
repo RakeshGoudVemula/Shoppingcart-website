@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<div class="container">
 	<table>
 		<c:forEach var="product" items="${productList }">
 			<tr>
@@ -19,8 +19,8 @@
 				<td><a href="mycart/add/${product.id}">Add to Cart</a>
 			</tr>
 
-
 		</c:forEach>
 	</table>
+	</div>
 </body>
 </html>

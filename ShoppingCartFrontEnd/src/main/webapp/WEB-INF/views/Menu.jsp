@@ -17,15 +17,17 @@
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="Home">Home</a></li>
 			<c:forEach var="category" items="${categoryList}">
-			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">${category.name}<span class="caret"></span></a>
-															
-				<ul class="dropdown-menu">
-			</ul>
-			</li>
-					</c:forEach>
-				
+				<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">${category.name}<span
+							class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+					</ul></li>
+			</c:forEach>
 			<li class="dropdown"><a class="dropdown-toggle"
-				data-toggle="dropdown" href="#">Products <span class="caret"></span></a>
+					data-toggle="dropdown" href="#">
+					Products <span class="caret"></span>
+				</a>
 				<ul class="dropdown-menu">
 
 					<c:forEach var="product" items="${productList}">
@@ -34,12 +36,36 @@
 					</c:forEach>
 				</ul></li>
 		</ul>
-		
+
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="RegistrationPage"><span
-					class="glyphicon glyphicon-pencil"></span> Register</a></li>
-			<li><a href="LoginPage"><span
-					class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			<!-- Not signed in -->
+			<c:if test="${!isUser=='true' && !isAdmin=='true'}">
+				<li><a href="RegistrationPage">
+						<span class="glyphicon glyphicon-pencil"></span> Register
+					</a></li>
+				<li><a href="Login">
+						<span class="glyphicon glyphicon-log-in"></span>Login
+					</a></li>
+
+			</c:if>
+				<!-- Admin  -->
+			<c:if test="${isAdmin=='true'}">
+
+				<li><a href="secure_logout">
+						<span class="glyphicon glyphicon-pencil"></span> SignOut
+					</a></li>			
+			</c:if>
+			<!-- User -->
+			<c:if test="${isUser=='true'}">
+
+				<li><a href="myCart">
+						<span class="glyphicon glyphicon-shopping-cart"></span> MyCart
+					</a></li>
+				<li><a href="secure_logout">
+						<span class="glyphicon glyphicon-log-in"></span>Signout
+					</a></li>
+			</c:if>
+
 		</ul>
 	</div>
 	</nav>

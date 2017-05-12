@@ -11,7 +11,6 @@
 
 </head>
 <body>
-	<form action="validate" method="post">
 		<div class="container">
 			<div class="btn-group btn-group-justified">
 				<a href="manageCategories" class="btn btn-info">ManageCategories</a>
@@ -20,7 +19,7 @@
 			</div>
 
 		</div>
-	</form>
+
 
 </body>
 </html>
