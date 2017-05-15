@@ -81,14 +81,17 @@ public class SupplierController {
 		log.debug("You are going to delete " + id);
 		ModelAndView mv = new ModelAndView("redirect:/manageSuppliers");
 
-		// check whether
+		// check whether products are there for the selected category or not
 
-		/*
-		 * productDAO.getAllProductsBySupplierID(id).size()!=0) { mv.addObject(
-		 * "message","few products are there under this supplier.you can not delete"
-		 * ); }
-		 */
-		if (supplierDAO.delete(id)) {
+		int noOfProducts = productDAO.getAllProductsBySupplierId(id).size();
+		if (noOfProducts != 0) {
+			log.debug("Few products are there by this seller, you cannot delete!");
+			session.setAttribute("supplierMessage", "There are " + noOfProducts + " products under this " + id + " seller, you cannot delete!");
+			return mv;
+		}
+		 
+		 
+		if (supplierDAO.delete(id)==true) {
 			mv.addObject("message", "successfully deleted the supplier");
 		} else {
 			mv.addObject("message", "Not able to delte the supplier");
@@ -116,6 +119,8 @@ public class SupplierController {
 		ModelAndView mv = new ModelAndView("redirect:/manageSuppliers");
 		mv.addObject("selectedSupplier", supplier);
 		session.setAttribute("selectedSupplier", supplier);
+		session.setAttribute("isAdminClickedManageSupplierEdit", "true");	
+
 
 		log.debug("Ending of method editSupplier");
 
@@ -127,6 +132,8 @@ public class SupplierController {
 			@RequestParam("description") String description) {
 		log.debug("Starting of method updateSupplier");
 		ModelAndView mv = new ModelAndView("redirect:/manageSuppliers");
+		session.setAttribute("isAdminClickedManageSupplierEdit", "false");	
+
 
 		supplier.setId(id);
 		supplier.setName(name);
@@ -153,6 +160,8 @@ public class SupplierController {
 		// Before calling save method, check whether supplier_id already exists
 		// in db
 		// if it does not exist, then only call save method.
+		session.setAttribute("isAdminClickedManageSupplierEdit", "false");	
+
 		log.debug("Ending of updateSupplier");
 		return mv;
 	}

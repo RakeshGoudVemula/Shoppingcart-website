@@ -114,6 +114,7 @@ public class CategoryController {
 		ModelAndView mv = new ModelAndView("redirect:/manageCategories");
 		mv.addObject("selectedCategory", category);
 		session.setAttribute("selectedCategory", category);
+		session.setAttribute("isAdminClickedManageCategoryEdit", "true");
 
 		log.debug("Ending of method editCategory");
 
@@ -125,6 +126,8 @@ public class CategoryController {
 			@RequestParam("description") String description) {
 		log.debug("Starting of method updateCategory");
 		ModelAndView mv = new ModelAndView("redirect:/manageCategories");
+		session.setAttribute("isAdminClickedManageCategoryEdit", "false");	
+
 
 		category.setId(id);
 		category.setName(name);
@@ -147,6 +150,8 @@ public class CategoryController {
 		// attach to session
 		session.setAttribute("categoryList", categoryList);
 		session.setAttribute("category", new Category());
+		session.setAttribute("isAdminClickedManageCategoryEdit", "false");
+
 		
 		
 

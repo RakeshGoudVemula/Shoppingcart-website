@@ -6,11 +6,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
- <link
+<link
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
 	rel="stylesheet">
- 
- 
+
+
 </head>
 <body>
 <body>
@@ -30,7 +30,11 @@
 						<td>${cart.product_name}</td>
 						<td>${cart.quantity}</td>
 						<td>${cart.price}</td>
-						<td><a href="myCart/delete/${cart.id}" class="glyphicon glyphicon-trash"></a>
+						<td><a href="myCart/delete/${cart.id}">
+								<button type="button" class="btn btn-danger">
+									<span class="glyphicon glyphicon-trash"></span> Delete
+								</button>
+							</a>
 					</tr>
 				</c:forEach>
 				<tr>

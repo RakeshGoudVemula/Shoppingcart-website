@@ -3,22 +3,20 @@
 <html>
 <head>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- <link rel="stylesheet" href="resources/css/bootstrap.css">
+<link rel="stylesheet" href="resources/css/MyStyle.css">
 
+<script src="WEB-INF/resources/js/jquery-3.2.1.js"></script>
+<script src="WEB-INF/resources/js/bootstrap.js"></script>
+<script src="WEB-INF/resources/js/MyStyle.js"></script> -->
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 </head>
 <body>
-
+	<h2>LOGIN</h2>
 	<div class="container">
-		<c:url var="action" value="/j_spring_security_check"/>
+		<c:url var="action" value="/j_spring_security_check" />
 		<form class="form-horizontal" action="${action}" method="post">
 			<div class="form-group">
 				<label for="Username">Username:</label> <input type="text"
@@ -27,14 +25,16 @@
 			</div>
 			<div class="form-group">
 				<label for="pwd">Password:</label> <input type="password"
-					class="form-control" name="password" id="password" placeholder="Enter password"
-					required>
+					class="form-control" name="password" id="password"
+					placeholder="Enter password" required>
 			</div>
-				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-			
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}">
+
 			<button type="submit" class="btn btn-success">Submit</button>
 		</form>
 	</div>
-	</form>
+
+
 </body>
 </html>

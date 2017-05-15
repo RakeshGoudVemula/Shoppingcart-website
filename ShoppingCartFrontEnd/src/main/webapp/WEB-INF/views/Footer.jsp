@@ -90,7 +90,7 @@ body {
 </head>
 
 <body>
-
+	<div class="container-fluid">
 	<div class="footer">
 		<div class="container">
 
@@ -112,7 +112,7 @@ body {
 
 		</div>
 	</div>
-
+</div>
 
 </body>
 </html>

@@ -8,62 +8,134 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<style type="text/css">
+</style>
 </head>
 <body>
+	<div class="container">
+		<div class="h2">Manage Categories</div>
 
-	<h2>Manage Categories</h2>
+		<!-- Create Category -->
+		<c:if test="${!isAdminClickedManageCategoryEdit=='true'}">
+			<!-- Add Category -->
+			<div id="CreateCategory">
+				<div class="h3">Create Category</div>
 
-	<div id="CreateCategory">
+				<form class="form-horizontal" action="manage_category_add">
+					<div class="form-group">
+						<label class="control-label col-sm-3" for="id">Category
+							Id:</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="id"
+								placeholder="Enter Category Id" name="id" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-3" for="name">Category
+							Name:</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="name"
+								placeholder="Enter Category Name" name="name" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-3" for="description">Category
+							Description:</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="description"
+								placeholder="Enter Category Description" name="description"
+								required>
+						</div>
+					</div>
 
-		<form action="manage_category_add">
+					<div class="form-group">
+						<div class="col-sm-offset-3 col-sm-9">
+							<button type="submit" class="btn btn-success">Create
+								Category</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</c:if>
 
-			<input type="text" name="id">
-			 <input type="text" name="name">
-			<input type="text" name="description">
-			 <input type="submit" value="Create Category">
-		</form>
+		<!-- Update Category -->
+		<c:if test="${isAdminClickedManageCategoryEdit=='true'}">
+			<div id="UpdateCategory">
+				<div class="h3">Update Category</div>
+
+				<form class="form-horizontal" action="manage_category_update"
+					method="">
+
+					<div class="form-group">
+						<label class="control-label col-sm-3" for="id">Category
+							Id:</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="id"
+								placeholder="Enter Category Id" name="id"
+								value="${selectedCategory.id}" required
+								readonly>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-3" for="name">Category
+							Name:</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="name"
+								placeholder="Enter Category Name" name="name"
+								value="${selectedCategory.name}" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-3" for=description>Category
+							Description:</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="description"
+								placeholder="Enter Category Description" name="description"
+								value="${selectedCategory.description}">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-offset-3 col-sm-9">
+							<button type="submit" class="btn btn-primary">Update
+								Category</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</c:if>
+		<!-- Show Category -->
+		<div id="ShowCategories">
+			<div class="h3">Show Categories</div>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<td>Category Id</td>
+						<td>Category Name</td>
+						<td>Category Description</td>
+						<td>Action</td>
+					</tr>
+				</thead>
+				<c:forEach var="category" items="${categoryList}">
+					<tr>
+						<td>${category.id}</td>
+						<td>${category.name}</td>
+						<td>${category.description}</td>
+						<td><a href="manage_category_delete/${category.id}">
+								<button type="button" class="btn btn-danger">
+          <span class="glyphicon glyphicon-trash"></span> Delete
+        </button></a>
+							<a href="manage-category-edit/${category.id}">
+								<button type="button" class="btn btn-info">
+          <span class="glyphicon glyphicon-pencil"></span> Edit
+        </button></a></td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
 
 	</div>
 
-	<div id="UpdateCategory">
-
-		<form action="manage_category_update">
-
-			<input type="text" name="id" value="${selectedCategory.id}"> <input
-				type="text" name="name" value="${selectedCategory.name}"> <input
-				type="text" name="description" value="${selectedCategory.description}">
-				 <input type="submit" value="Update Category">
-		</form>
-
-	</div>
-
-	<h2>Delete / Update the Categories</h2>
-	<div id="ShowCategories">
-
-		<table border="2" class="table table-bordered">
-
-			<thead>
-				<tr class="info">
-					<td class="active">Category ID</td>
-					<td>Category Name</td>
-					<td>Category Description</td>
-					<td>Action</td>
-				</tr>
-			</thead>
-
-			<c:forEach var="category" items="${categoryList}">
-
-				<tr>
-					<td>${category.id}</td>
-					<td>${category.name}</td>
-					<td>${category.description}</td>
-
-					<td><a href="manage_category_delete/${category.id}">Delete
-							| </a> <a href="manage-category-edit/${category.id}"> Update </a></td>
-				</tr>
-			</c:forEach>
-		</table>
-	</div>
 
 </body>
 </html>

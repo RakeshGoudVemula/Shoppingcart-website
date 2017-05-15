@@ -1,8 +1,5 @@
 package com.niit.controller;
 
-import java.util.List;
-
-
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -15,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,7 +24,6 @@ import com.niit.shoppingcart.domain.Category;
 import com.niit.shoppingcart.domain.Product;
 import com.niit.shoppingcart.domain.Supplier;
 import com.niit.shoppingcart.util.FileUtil;
-import com.niit.shoppingcart.util.*;
 
 @Controller
 public class ProductController {

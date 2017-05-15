@@ -6,6 +6,13 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style type="text/css">
+  
+  .carousel-inner img{
+  	margin: auto;
+  }
+  </style>
+  
 </head>
 <body>
 
@@ -17,26 +24,26 @@
       <li data-target="#myCarousel" data-slide-to="1"></li>
       <li data-target="#myCarousel" data-slide-to="2"></li>
       <li data-target="#myCarousel" data-slide-to="3"></li>
+      
     </ol>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
       <div class="item active">
-        <img src="resources/images/slide2-img.jpg" alt="Mobiles" style="width:100%;">
+        <img src="resources/images/banner-rolex-watches.jpg">
       </div>
 
       <div class="item">
-        <img src="resources/images/Game.jpg" alt="Home Appliances" style="width:100%;">
-      </div>
-    
-     	<div class="item">
-     		<img alt="Gaming" src="resources/images/5.jpg" style="width:100%;">
-     	</div>
-    
-    <div class="item">
-        <img src="resources/images/slide1-img.jpg" alt="gaming" style="width:100%;">
-      </div>
-    </div>
+        <img src="resources/images/banner-omega-watches.jpg" alt="watch">
+      </div> 
+      <div class="item">
+        <img src="resources/images/whats_new_featured_08052017.jpg" alt="watch"  >
+      </div> 
+      
+    	<div class="item">
+    		<img  src="resources/images/banner-breitling-watches.jpg" >
+    	</div>
+    	</div>
 
     <!-- Left and right controls -->
     <a class="left carousel-control" href="#myCarousel" data-slide="prev">

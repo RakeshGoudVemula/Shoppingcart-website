@@ -4,10 +4,15 @@
 <html>
 <head>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<title>Electronics Shoppe Store</title>
-<link rel="stylesheet" href="resources/css/bootstrap.css">
-<script src="WEB-INF/resources/js/jquery-3.2.0.js"></script>
-<script src="WEB-INF/resources/js/bootstrap.js"></script>
+<link rel="stylesheet"
+	href="<c:url value="resources/css/bootstrap.css"/>">
+<link
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" href="<c:url value="resources/css/MyStyle.css"/>">
+<script src="<c:url value="resources/js/jquery-3.2.1.js"/>"></script>
+<script src="<c:url value="resources/js/bootstrap.js"/>"></script>
+<title>Luxury Watches Store</title>
 
 </head>
 <body>
@@ -24,13 +29,8 @@
 		<jsp:include page="Carousel.jsp"></jsp:include>
 
 	</c:if>
-
-
 	<hr>
 	<jsp:include page="AllProducts.jsp"></jsp:include>
-
-
-
 
 	<c:if test="${isAdmin=='true'}">
 		<jsp:include page="admin/AdminHome.jsp"></jsp:include>
@@ -49,7 +49,6 @@
 		<jsp:include page="admin/Product.jsp"></jsp:include>
 		<div class="container col-sm-offset-3 col-sm-9" style="color: green">${pMessage}</div>
 	</c:if>
-
 
 	<c:if test="${isUserClickedLogin=='true'}">
 		<jsp:include page="Login.jsp"></jsp:include>

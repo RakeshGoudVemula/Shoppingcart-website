@@ -12,58 +12,126 @@
 </head>
 <body>
 
-	<h2>Manage Suppliers</h2>
+	<div class="container">
+		<div class="h2">Manage Supplier</div>
+		<c:if test="${isAdminClickedManageSupplierEdit=='true'}">
+			<div id="UpdateSupplier">
+				<div class="h3">Update Supplier</div>
 
-	<div id="CreateSupplier">
+				<form class="form-horizontal" action="manage_supplier_update"
+					method="">
+					<div class="form-group">
+						<label class="control-label col-sm-3" for="id">Supplier
+							Id:</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="id"
+								placeholder="Enter Supplier Id" name="id"
+								value="${selectedSupplier.id}" readonly>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-3" for="name">Supplier
+							Name:</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="name"
+								placeholder="Enter Supplier Name" name="name"
+								value="${selectedSupplier.name}" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-3" for="description">Supplier
+							Description:</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="description"
+								placeholder="Enter Supplier Description" name="description"
+								value="${selectedSupplier.description}" required>
+						</div>
+					</div>
 
-		<form action="manage_supplier_add">
+					<div class="form-group">
+						<div class="col-sm-offset-3 col-sm-9">
+							<button type="submit" class="btn btn-primary">Update
+								Supplier</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</c:if>
 
-			<input type="text" name="id">
-			 <input type="text" name="name">
-			<input type="text" name="description">
-			 <input type="submit" value="Create Supplier">
-		</form>
+		<c:if test="${!isAdminClickedManageSupplierEdit=='true'}">
+			<div id="CreateSupplier">
+				<div class="h3">Create Supplier</div>
 
-	</div>
+				<form class="form-horizontal" action="manage_supplier_add">
+					<div class="form-group">
+						<label class="control-label col-sm-3" for="id">Supplier
+							Id:</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="id"
+								placeholder="Enter Supplier Id" name="id" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-3" for="name">Supplier
+							Name:</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="name"
+								placeholder="Enter Supplier Name" name="name" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-3" for="description">Supplier
+							Description:</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="description"
+								placeholder="Enter Supplier Description" name="description"
+								required>
+						</div>
+					</div>
 
-	<div id="UpdateSupplier">
+					<div class="form-group">
+						<div class="col-sm-offset-3 col-sm-9">
+							<button type="submit" class="btn btn-success">Create
+								Supplier</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</c:if>
 
-		<form action="manage_supplier_update">
 
-			<input type="text" name="id" value="${selectedSupplier.id}"> <input
-				type="text" name="name" value="${selectedSupplier.name}"> <input
-				type="text" name="description" value="${selectedSupplier.description}">
-				 <input type="submit" value="Update Supplier">
-		</form>
 
-	</div>
 
-	<h2>Delete / Update the Suppliers</h2>
-	<div id="ShowSuppliers">
+		<div id="ShowSupplier">
+			<div class="h3">Show Suppliers</div>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<td>Supplier Id</td>
+						<td>Supplier Name</td>
+						<td>Supplier Description</td>
+						<td>Action</td>
+					</tr>
+				</thead>
+				<c:forEach var="supplier" items="${supplierList}">
+					<tr>
+						<td>${supplier.id}</td>
+						<td>${supplier.name}</td>
+						<td>${supplier.description}</td>
+						<td><a href="manage_supplier_delete/${supplier.id}">
+								<button type="button" class="btn btn-danger">
+									<span class="glyphicon glyphicon-trash"></span> Delete
+								</button>
+							</a> <a href="manage-supplier-edit/${supplier.id}">
+								<button type="button" class="btn btn-info">
+									<span class="glyphicon glyphicon-pencil"></span> Edit
+								</button>
+							</a></td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
 
-		<table border="2" class="table table-bordered">
-
-			<thead>
-				<tr class="info">
-					<td class="active">Supplier ID</td>
-					<td>Supplier Name</td>
-					<td>Supplier Description</td>
-					<td>Action</td>
-				</tr>
-			</thead>
-
-			<c:forEach var="supplier" items="${supplierList}">
-
-				<tr>
-					<td>${supplier.id}</td>
-					<td>${supplier.name}</td>
-					<td>${supplier.description}</td>
-
-					<td><a href="manage_supplier_delete/${supplier.id}">Delete
-							| </a> <a href="manage-supplier-edit/${supplier.id}"> Update </a></td>
-				</tr>
-			</c:forEach>
-		</table>
 	</div>
 
 

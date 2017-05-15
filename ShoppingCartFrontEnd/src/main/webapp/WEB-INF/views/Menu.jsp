@@ -4,15 +4,30 @@
 <html>
 <head>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- <link rel="stylesheet" href="resources/css/bootstrap.css">
+<link rel="stylesheet" href="resources/css/MyStyle.css">
+
+<script src="WEB-INF/resources/js/jquery-3.2.0.js"></script>
+<script src="WEB-INF/resources/js/bootstrap.js"></script>
+<script src="WEB-INF/resources/js/MyStyle.js"></script> -->
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Electronics Shoppe Stores</title>
+
+<style type="text/css">
+
+ body {
+	background-image: url("resources/images/bg-10-full.jpg");
+	background-size: cover;
+} 
+
+</style>
 </head>
 <body>
-	<nav class="navbar navbar-inverse">
 	<div class="container-fluid">
+
+		<nav class="navbar navbar-inverse">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="Home">Electronics Shoppe Store</a>
+			<a class="navbar-brand" href="Home">Luxury Watches</a>
 		</div>
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="Home">Home</a></li>
@@ -29,7 +44,6 @@
 					Products <span class="caret"></span>
 				</a>
 				<ul class="dropdown-menu">
-
 					<c:forEach var="product" items="${productList}">
 						<li><a href="#">${product.name}</a></li>
 
@@ -48,18 +62,19 @@
 					</a></li>
 
 			</c:if>
-				<!-- Admin  -->
+			<!-- Admin  -->
 			<c:if test="${isAdmin=='true'}">
 
 				<li><a href="secure_logout">
 						<span class="glyphicon glyphicon-pencil"></span> SignOut
-					</a></li>			
+					</a></li>
 			</c:if>
 			<!-- User -->
 			<c:if test="${isUser=='true'}">
 
 				<li><a href="myCart">
-						<span class="glyphicon glyphicon-shopping-cart"></span> MyCart
+						<span class="glyphicon glyphicon-shopping-cart"></span>
+						MyPurchases 
 					</a></li>
 				<li><a href="secure_logout">
 						<span class="glyphicon glyphicon-log-in"></span>Signout
@@ -67,10 +82,8 @@
 			</c:if>
 
 		</ul>
+		</nav>
 	</div>
-	</nav>
-
-	<div class="container"></div>
 
 
 </body>
