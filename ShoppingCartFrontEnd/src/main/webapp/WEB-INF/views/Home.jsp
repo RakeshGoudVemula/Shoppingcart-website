@@ -9,7 +9,7 @@
 <link
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
 	rel="stylesheet">
-<link rel="stylesheet" href="<c:url value="resources/css/MyStyle.css"/>">
+<link rel="stylesheet" href="<c:url value="resources\css\MyStyle.css"/>">
 <script src="<c:url value="resources/js/jquery-3.2.1.js"/>"></script>
 <script src="<c:url value="resources/js/bootstrap.js"/>"></script>
 <title>Luxury Watches Store</title>
@@ -58,6 +58,10 @@
 	</c:if>
 	<c:if test="${isUserClickedShoppingCart=='true'}">
 		<jsp:include page="Home.jsp"></jsp:include>
+	</c:if>
+	<c:if test="${isUserClickedCheckout=='true'}">
+		<jsp:include page="Thankyou.jsp"></jsp:include>
+	
 	</c:if>
 	<jsp:include page="Footer.jsp"></jsp:include>
 

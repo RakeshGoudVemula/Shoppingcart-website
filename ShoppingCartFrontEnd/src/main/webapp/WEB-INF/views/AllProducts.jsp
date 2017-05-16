@@ -9,15 +9,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-
 	<div class="container">
-<%-- 		<table>
+		<%-- 		<table>
 			<c:forEach var="product" items="${productList }">
 				<tr>
 					<td><img alt="${product.name}"
 						src="<c:url value= "resources/img/${product.id}.jpg"/>"></td>
-
 					<td><a href="mycart/add/${product.id}">Add to Cart</a>
 				</tr>
 		</table> --%>
@@ -28,21 +25,25 @@
 				<article class="col-item">
 				<div class="photo">
 					<div class="options-cart-round">
-						<a href="mycart/add/${product.id}" class="btn btn-info" title="Add to cart">
+						<a href="mycart/add/${product.id}" class="btn btn-info"
+							title="Add to cart">
 							<span class="fa fa-shopping-cart"></span>
 						</a>
 					</div>
-					<a href="#">
+					<a href="">
 						<img src="<c:url value= "resources/img/${product.id}.jpg"/>"
 							class="img-responsive" alt="${product.id}" />
 					</a>
+					<%-- <a href="<spring:url value="/manage-product-get/${product.Id}"/>"
+                                   data-toggle="tooltip" title="Click to get Product Details">
+                                <span class="glyphicon glyphicon-info-sign"/></a> --%>
 				</div>
 				<div class="info">
 					<div class="row">
 						<div class="price-details col-md-6">
 							<p class="details">${product.description}</p>
 							<h1>${product.name}</h1>
-							<span class="price-new">${product.price}</span>
+							<span class="price-new" ><i class="fa fa-inr" aria-hidden="true">${product.price}</i></span>
 						</div>
 					</div>
 				</div>

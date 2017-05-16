@@ -9,8 +9,12 @@
 <link
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
 	rel="stylesheet">
+<style type="text/css">
+.table {
+ color: black;
+}
 
-
+</style>
 </head>
 <body>
 <body>
@@ -20,7 +24,6 @@
 				<thead>
 					<tr>
 						<td>Product</td>
-						<td>Quantity</td>
 						<td>Price</td>
 						<td>Action</td>
 					</tr>
@@ -28,7 +31,6 @@
 				<c:forEach var="cart" items="${cartList}">
 					<tr>
 						<td>${cart.product_name}</td>
-						<td>${cart.quantity}</td>
 						<td>${cart.price}</td>
 						<td><a href="myCart/delete/${cart.id}">
 								<button type="button" class="btn btn-danger">
@@ -39,6 +41,9 @@
 				</c:forEach>
 				<tr>
 					<td>Total Rs.${totalAmount}</td>
+										<td><a href="thankyou" class="btn btn-success">Check Out</a></td>			
+					
+				<td><a href=></a>
 			</table>
 		</div>
 	</div>

@@ -115,5 +115,14 @@ public class CartController {
 		return mv;
 		
 	}
+	
+	@GetMapping("/Thankyou")
+	public ModelAndView thankyou(){
+		ModelAndView mv = new ModelAndView("redirect:/Thankyou");
+		session.setAttribute("isUserClickedCheckout", "true");
+
+		return mv;
+
+	}
 
 }

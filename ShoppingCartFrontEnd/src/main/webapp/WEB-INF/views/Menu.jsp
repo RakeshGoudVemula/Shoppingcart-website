@@ -14,12 +14,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 <style type="text/css">
-
- body {
+body {
 	background-image: url("resources/images/bg-10-full.jpg");
 	background-size: cover;
-} 
-
+}
 </style>
 </head>
 <body>
@@ -30,7 +28,10 @@
 			<a class="navbar-brand" href="Home">Luxury Watches</a>
 		</div>
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="Home">Home</a></li>
+			<a href="Home" class="pull-left">
+				<img src="resources/images/Rolex_Logo.png">
+			</a>
+			<li class=""><a href="Home">Home</a></li>
 			<c:forEach var="category" items="${categoryList}">
 				<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">${category.name}<span
@@ -74,7 +75,7 @@
 
 				<li><a href="myCart">
 						<span class="glyphicon glyphicon-shopping-cart"></span>
-						MyPurchases 
+						MyPurchases
 					</a></li>
 				<li><a href="secure_logout">
 						<span class="glyphicon glyphicon-log-in"></span>Signout

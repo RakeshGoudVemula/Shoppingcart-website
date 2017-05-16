@@ -91,28 +91,31 @@ body {
 
 <body>
 	<div class="container-fluid">
-	<div class="footer">
-		<div class="container">
+		<div class="footer">
+			<div class="container">
+				<div class="col-md-9">
+					<p class="text-white" ><i class="fa fa-copyright" aria-hidden="true"></i> 2017 rakeshgoudvemula Inc. </p>
+				</div>
 
-			<a href='https://www.facebook.com/'>
-				<i id="social-fb" class="fa fa-facebook fa-3x fa-fw social"></i>
-			</a>
-			<a href='https://twitter.com/'>
-				<i id="social-tw" class="fa fa-twitter fa-3x fa-fw social"></i>
-			</a>
+				<a href='https://www.facebook.com/'>
+					<i id="social-fb" class="fa fa-facebook fa-3x fa-fw social"></i>
+				</a>
+				<a href='https://twitter.com/'>
+					<i id="social-tw" class="fa fa-twitter fa-3x fa-fw social"></i>
+				</a>
 
-			<a href='https://www.linkedin.com/in/rakesh-chintu-14046a8b/'>
-				<i id="social-li" class="fa fa-linkedin fa-3x fa-fw social"></i>
-			</a>
+				<a href='https://www.linkedin.com/in/rakesh-chintu-14046a8b/'>
+					<i id="social-li" class="fa fa-linkedin fa-3x fa-fw social"></i>
+				</a>
 
-			<a href="https://plus.google.com/">
-				<i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i>
+				<a href="https://plus.google.com/">
+					<i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i>
 
-			</a>
+				</a>
 
+			</div>
 		</div>
 	</div>
-</div>
 
 </body>
 </html>
