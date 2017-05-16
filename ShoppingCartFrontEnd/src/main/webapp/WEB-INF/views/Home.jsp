@@ -59,7 +59,7 @@
 	<c:if test="${isUserClickedShoppingCart=='true'}">
 		<jsp:include page="Home.jsp"></jsp:include>
 	</c:if>
-	<c:if test="${isUserClickedCheckout=='true'}">
+	<c:if test="${isUserClickedCheckOut=='true'}">
 		<jsp:include page="Thankyou.jsp"></jsp:include>
 	
 	</c:if>

@@ -41,7 +41,7 @@
 				</c:forEach>
 				<tr>
 					<td>Total Rs.${totalAmount}</td>
-										<td><a href="thankyou" class="btn btn-success">Check Out</a></td>			
+										<td><a href="Thankyou" class="btn btn-success">Check Out</a></td>			
 					
 				<td><a href=></a>
 			</table>

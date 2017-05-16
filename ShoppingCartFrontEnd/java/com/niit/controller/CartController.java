@@ -117,12 +117,10 @@ public class CartController {
 	}
 	
 	@GetMapping("/Thankyou")
-	public ModelAndView thankyou(){
-		ModelAndView mv = new ModelAndView("redirect:/Thankyou");
-		session.setAttribute("isUserClickedCheckout", "true");
-
-		return mv;
-
+	public String cartCheckout(Model model){
+		model.addAttribute("isUserClickedCheckOut", "true");
+		return "Home";
+		
 	}
 
 }
