@@ -12,9 +12,11 @@
   <h1 class="display-3">Thank You!</h1>
   <p class="lead"><strong>Your Request has been processed.</strong> for further information regarding delivery  please check your mail.</p>
   <hr>
+  
   <p>
-    Having trouble? <a href="">Contact us</a>
+    Having trouble? <a href="ContactUs">Contact us</a>
   </p>
+  
   <p class="lead">
     <a class="btn btn-primary btn-sm" href="Home" role="button">Continue to homepage</a>
   </p>

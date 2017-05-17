@@ -19,8 +19,6 @@
 				</tr>
 		</table> --%>
 		<c:forEach var="product" items="${productList}">
-
-
 			<div class="col-sm-3">
 				<article class="col-item">
 				<div class="photo">
@@ -43,17 +41,15 @@
 						<div class="price-details col-md-6">
 							<p class="details">${product.description}</p>
 							<h1>${product.name}</h1>
-							<span class="price-new" ><i class="fa fa-inr" aria-hidden="true">${product.price}</i></span>
+							<span class="price-new"><i class="fa fa-inr"
+								aria-hidden="true">${product.price}</i></span>
 						</div>
 					</div>
 				</div>
 				</article>
 				<p class="text-center">${product.name}</p>
 			</div>
-
 		</c:forEach>
-
 	</div>
-
 </body>
 </html>

@@ -139,4 +139,14 @@ public class ProductController {
 		log.debug("ending of method getSelectedProduct");
 		return mv;
 	}	
+	
+	@RequestMapping("/ProductDisplay/{id}")
+	public String viewProduct(@PathVariable("id") String id, Model model) {
+		session.setAttribute("selectedProduct", productDAO.getProductById(id));
+		model.addAttribute("isUserClickedSelectedProduct", "true");
+		return "redirect:/ProductDisplay";
+	}
+
+	
+	
 }

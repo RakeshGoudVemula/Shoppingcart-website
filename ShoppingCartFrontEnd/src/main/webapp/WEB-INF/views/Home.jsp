@@ -16,6 +16,11 @@
 
 </head>
 <body>
+	<a href="Home">
+		<h2 align="center" style="color: navy;"><img src="<c:url value="/resources/images/rolex-logo.png"/>"
+			style="max-height: 100px;" alt="logo" />eWatch</h2>
+		
+	</a>
 	<hr color="green">
 	<jsp:include page="Menu.jsp"></jsp:include>
 	${message}
@@ -27,42 +32,65 @@
 	<c:if test="${isUserAtRoot=='true'}">
 
 		<jsp:include page="Carousel.jsp"></jsp:include>
+		<jsp:include page="AllProducts.jsp"></jsp:include>
 
 	</c:if>
-	<hr>
-	<jsp:include page="AllProducts.jsp"></jsp:include>
+
+	<c:if test="${isUserClickedContactUs=='true' }">
+		<jsp:include page="ContactUs.jsp"></jsp:include>
+	</c:if>
 
 	<c:if test="${isAdmin=='true'}">
+
 		<jsp:include page="admin/AdminHome.jsp"></jsp:include>
+
 	</c:if>
 
 	<c:if test="${isAdminClickedCategories=='true'}">
+
 		<jsp:include page="admin/Category.jsp"></jsp:include>
 
 	</c:if>
 
 	<c:if test="${isAdminClickedSuppliers=='true' }">
+
 		<jsp:include page="admin/Supplier.jsp"></jsp:include>
+
 	</c:if>
 
 	<c:if test="${isAdminClickedProducts=='true' }">
+
 		<jsp:include page="admin/Product.jsp"></jsp:include>
+
 		<div class="container col-sm-offset-3 col-sm-9" style="color: green">${pMessage}</div>
+
 	</c:if>
 
+
 	<c:if test="${isUserClickedLogin=='true'}">
+
 		<jsp:include page="Login.jsp"></jsp:include>
+
 	</c:if>
+
 	<c:if test="${isUserClickedRegister=='true'}">
+
 		<jsp:include page="Registration.jsp"></jsp:include>
+
 	</c:if>
+
 	<c:if test="${isUserClickedShoppingCart=='true'}">
+
 		<jsp:include page="Home.jsp"></jsp:include>
+
 	</c:if>
+
 	<c:if test="${isUserClickedCheckOut=='true'}">
+
 		<jsp:include page="Thankyou.jsp"></jsp:include>
-	
+
 	</c:if>
+
 	<jsp:include page="Footer.jsp"></jsp:include>
 
 </body>

@@ -3,15 +3,8 @@
 <html>
 <head>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!-- <link rel="stylesheet" href="resources/css/bootstrap.css">
-<link rel="stylesheet" href="resources/css/MyStyle.css">
-
-<script src="WEB-INF/resources/js/jquery-3.2.1.js"></script>
-<script src="WEB-INF/resources/js/bootstrap.js"></script>
-<script src="WEB-INF/resources/js/MyStyle.js"></script> -->
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-
 </head>
 <body>
 	<h2>LOGIN</h2>
@@ -31,10 +24,8 @@
 			<input type="hidden" name="${_csrf.parameterName}"
 				value="${_csrf.token}">
 
-			<button type="submit" class="btn btn-success">Submit</button>
+			<button type="submit"  class="btn btn-success"> <i class="fa fa-sign-in"> Login</i></button>
 		</form>
 	</div>
-
-
-</body>
+	</body>
 </html>

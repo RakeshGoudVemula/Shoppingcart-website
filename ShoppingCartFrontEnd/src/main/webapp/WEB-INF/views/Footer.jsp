@@ -90,29 +90,32 @@ body {
 </head>
 
 <body>
-	<div class="container-fluid">
+
 		<div class="footer">
+			<div class="container-fluid">
 			<div class="container">
 				<div class="col-md-9">
-					<p class="text-white" ><i class="fa fa-copyright" aria-hidden="true"></i> 2017 rakeshgoudvemula Inc. </p>
+					<p class="text-white pull-left">
+						<i class="fa fa-copyright" aria-hidden="true"></i> 2017
+						rakeshgoudvemula Inc.
+					</p>
 				</div>
 
-				<a href='https://www.facebook.com/'>
+				<a href="https://www.facebook.com/" target="_blank">
 					<i id="social-fb" class="fa fa-facebook fa-3x fa-fw social"></i>
 				</a>
-				<a href='https://twitter.com/'>
+				<a href="https://twitter.com/" target="_blank">
 					<i id="social-tw" class="fa fa-twitter fa-3x fa-fw social"></i>
 				</a>
 
-				<a href='https://www.linkedin.com/in/rakesh-chintu-14046a8b/'>
+				<a href="https://www.linkedin.com/in/rakesh-chintu-14046a8b/" target="_blank">
 					<i id="social-li" class="fa fa-linkedin fa-3x fa-fw social"></i>
 				</a>
 
-				<a href="https://plus.google.com/">
+				<a href="https://plus.google.com/" target="_blank">
 					<i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i>
 
 				</a>
-
 			</div>
 		</div>
 	</div>

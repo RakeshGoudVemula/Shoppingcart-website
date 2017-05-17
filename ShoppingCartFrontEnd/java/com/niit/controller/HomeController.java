@@ -77,8 +77,20 @@ public class HomeController {
 		return "Home";
 	}
 
-	/*
-	 * @RequestMapping("/Home") public String homePage(Model model) {
-	 * model.addAttribute("isUserClickedHome", "true"); return "Home"; }
-	 */
+	
+	/* @RequestMapping("/Home") public String homePage(Model model) {
+	  model.addAttribute("isUserClickedHome", "true"); return "Home"; 
+	  }	 */
+	 
+	 @RequestMapping("/ContactUs")
+		public String contactUsPage(Model model) {
+			model.addAttribute("isUserClickedContactUs", "true");
+			//model.addAttribute("isUserAtRoot", "false");
+			return "Home";
+		}
+	 
+	 
+	 
+	 
+	 
 }

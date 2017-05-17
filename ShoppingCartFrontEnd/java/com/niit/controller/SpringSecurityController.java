@@ -160,7 +160,7 @@ public class SpringSecurityController {
 			
 			//OR Simpley remove only one attribute from the session.
 			
-			//session.removeAttribute("loggedInUser"); // you no need to load categoriees,suppliers and products
+			//session.removeAttribute("loggedInUser"); // you no need to load categories,suppliers and products
 		
 			return mv;
 			
