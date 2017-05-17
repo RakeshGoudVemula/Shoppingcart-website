@@ -1,5 +1,5 @@
 # E-Commerce Website
- This an ecommerce website which is built using spring and hibernate which makes it database independent. It is divided into two parts frontend and backend which makes it scalable.
+ This is an ecommerce website which is built using spring and hibernate which makes it database independent. It is divided into two parts frontend and backend which makes it scalable.
  
  It has a role based access mechanism i.e Customer and Admin . It is secured using Spring Security which satisfies all the modern security needs for a website.
  
@@ -43,7 +43,6 @@ Example --
 ### Technologies used 
 - Spring framework
 - Hibernate ORM tool
-- Angular JS
 - Bootstrap 3
 - HTML 5
 - CSS 3
