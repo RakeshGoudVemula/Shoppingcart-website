@@ -21,11 +21,6 @@ public class UserDAOTestCase {
 	@Autowired
 	static User user;
 
-	// the above objects need to initialize
-	/**
-	 * This method is going to execute before calling any one of the test case
-	 * and will execute only once
-	 */
 
 	@BeforeClass
 	public static void initialize() {
@@ -33,10 +28,8 @@ public class UserDAOTestCase {
 		context.scan("com.niit");
 		context.refresh();
 
-		// get the userDAO from context
 		userDAO = (UserDAO) context.getBean("userDAO");
 
-		// get the user from context
 		user = (User) context.getBean("user");
 
 	}
@@ -53,37 +46,5 @@ public class UserDAOTestCase {
 
 	}
 
-	/*@Test
-	public void updateUserTestCase() {
-		user.setId("rakesh");
-		user.setName("Chintu");
-		user.setPassword("password");
-		user.setRole("Admin");
-		user.setContact("8965456");
-		boolean flag = userDAO.update(user);
-
-		// this assertEquals method
-		// error-if there is any runtime error- Red mark
-		// success-if expected and actual is same- green mark
-		// fail-if expected and actual is different- blue mark
-		assertEquals("UpdateUserTestCase", true, flag);
-
-	}
-
-	@Test
-	public void validateUserTestCase() {
-		boolean flag = userDAO.validate("Chintu", "password");
-
-		assertEquals(true, flag);
-	}
-
-	@Test
-	public void listAllUserTestCase() {
-
-		int actualsize = userDAO.list().size();
-		// will compare actual and expected.
-		assertEquals(4, actualsize);
-
-	}*/
-
+	
 }

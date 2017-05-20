@@ -72,8 +72,7 @@
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="id"
 								placeholder="Enter Category Id" name="id"
-								value="${selectedCategory.id}" required
-								readonly>
+								value="${selectedCategory.id}" required readonly>
 						</div>
 					</div>
 					<div class="form-group">
@@ -123,20 +122,18 @@
 						<td>${category.description}</td>
 						<td><a href="manage_category_delete/${category.id}">
 								<button type="button" class="btn btn-danger">
-          <span class="glyphicon glyphicon-trash"></span> Delete
-        </button></a>
-							<a href="manage-category-edit/${category.id}">
+									<span class="glyphicon glyphicon-trash"></span> Delete
+								</button>
+							</a> <a href="manage-category-edit/${category.id}">
 								<button type="button" class="btn btn-info">
-          <span class="glyphicon glyphicon-pencil"></span> Edit
-        </button></a></td>
+									<span class="glyphicon glyphicon-pencil"></span> Edit
+								</button>
+							</a></td>
 					</tr>
 				</c:forEach>
 			</table>
 		</div>
-
 	</div>
-
-
 </body>
 </html>
 

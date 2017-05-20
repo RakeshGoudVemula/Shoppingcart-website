@@ -109,8 +109,7 @@ public class CategoryController {
 
 		category = categoryDAO.getCategoryByID(id);
 
-		// Selected category details we have to store in another instance
-		// i.e., ModelAndView instance
+		
 		ModelAndView mv = new ModelAndView("redirect:/manageCategories");
 		mv.addObject("selectedCategory", category);
 		session.setAttribute("selectedCategory", category);
@@ -147,15 +146,10 @@ public class CategoryController {
 
 		// get all categories
 		List<Category> categoryList = categoryDAO.list();
-		// attach to session
 		session.setAttribute("categoryList", categoryList);
 		session.setAttribute("category", new Category());
 		session.setAttribute("isAdminClickedManageCategoryEdit", "false");
 
-		
-		// Before calling save method, check whether category_id already exists
-		// in db
-		// if it does not exist, then only call save method.
 		log.debug("Ending of updateCategory");
 		return mv;
 	}

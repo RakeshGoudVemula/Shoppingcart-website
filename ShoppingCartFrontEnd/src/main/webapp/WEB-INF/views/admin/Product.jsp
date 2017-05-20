@@ -117,8 +117,6 @@
 
 		</form:form>
 		<br>
-
-
 		<!-- Show Products -->
 		<div class="h3">Product List</div>
 		<c:if test="${!empty productList}">
@@ -154,8 +152,6 @@
 				</c:forEach>
 			</table>
 		</c:if>
-
 	</div>
-
 </body>
 </html>

@@ -18,26 +18,19 @@ import com.niit.controller.ProductController;
 public class FileUtil {
 
 	private static Logger log = LoggerFactory.getLogger(FileUtil.class);
-	// private static String workingDir =
-	// System.getProperty("user.dir");//D:\Softwares\IDE\eclipse-jee-neon-RC3-win32-x86_64\eclipse
 
-	// "D:\\ShoppingCart\\Images";
 	public static void upload(String path, MultipartFile file, String fileName) {
 		log.debug("Starting of the method upload");
 		log.debug("Current Path :" + Paths.get("").toFile());
-		//Util.removeComman(fileName);
 		if (!file.isEmpty()) {
 
 			try {
 				byte[] bytes = file.getBytes();
 
-				// Creating the directory to store file
 				File dir = new File(path);
 				if (!dir.exists())
-					dir.mkdirs(); // Make/create directory
+					dir.mkdirs();
 
-				// Create the file on server
-				// D:\\ShoppingCart\\Images\\fileName.jpg
 				File serverFile = new File(dir.getAbsolutePath() + File.separator + fileName);
 
 				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));

@@ -9,15 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="container">
-		<%-- 		<table>
-			<c:forEach var="product" items="${productList }">
-				<tr>
-					<td><img alt="${product.name}"
-						src="<c:url value= "resources/img/${product.id}.jpg"/>"></td>
-					<td><a href="mycart/add/${product.id}">Add to Cart</a>
-				</tr>
-		</table> --%>
+	<div class="container">		
 		<c:forEach var="product" items="${productList}">
 			<div class="col-sm-3">
 				<article class="col-item">
@@ -31,10 +23,6 @@
 					<a href="">
 						<img src="<c:url value= "resources/img/${product.id}.jpg"/>"
 							class="img-responsive" alt="${product.id}" />
-					</a>
-					<%-- <a href="<spring:url value="/manage-product-get/${product.Id}"/>"
-                                   data-toggle="tooltip" title="Click to get Product Details">
-                                <span class="glyphicon glyphicon-info-sign"/></a> --%>
 				</div>
 				<div class="info">
 					<div class="row">

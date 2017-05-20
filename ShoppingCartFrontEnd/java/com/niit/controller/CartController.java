@@ -25,8 +25,6 @@ public class CartController {
 	
 	@Autowired
 	MyCart myCart;
-	
-	
 
 	@Autowired
 	MyCartDAO myCartDAO;
@@ -39,7 +37,6 @@ public class CartController {
 	
 	
 	private static Logger log = (Logger) LoggerFactory.getLogger(CartController.class);
-
 
 	@RequestMapping("/myCart")
 	public String myCart(Model model){
@@ -61,16 +58,15 @@ public class CartController {
 				model.addAttribute("totalAmount", myCartDAO.getTotalAmount(loggedInUser));
 				long totalAmount = (long) myCartDAO.getTotalAmount(loggedInUser);
 				session.setAttribute("totalAmount", totalAmount);
-				session.setAttribute("isAdmin", "false");
-				//System.out.println(totalAmount);
-			}
+				session.setAttribute("isAdmin", "false");		
+				session.setAttribute("cartsize", cartSize);				
+				}
 			
 		}
 		
 		log.debug("Ending of myCart in CartController");
 		return "Home";
 	}
-	
 	
 	@GetMapping("mycart/add/{id}")
 	public ModelAndView addToCart(@PathVariable("id") String id){
@@ -89,6 +85,8 @@ public class CartController {
 		myCart.setDate_added(new Date(System.currentTimeMillis()));
 		session.setAttribute("isAdmin", "false");
 		myCartDAO.save(myCart);
+		int cartSize = myCartDAO.list(loggedInUser).size();
+		session.setAttribute("cartsize", cartSize);
 		
 		//This way it will redirect to Home.jsp
 		ModelAndView mv = new ModelAndView("redirect:/Home");
@@ -100,10 +98,13 @@ public class CartController {
 	}
 	@GetMapping("myCart/delete/{id}")
 	public ModelAndView removeFromCart(@PathVariable("id") int id){
+		String loggedInUser = (String) session.getAttribute("loggedInUser");
+
 		log.debug("Starting of removeFromCart in CartController");
+		int cartSize = myCartDAO.list(loggedInUser).size();
+		session.setAttribute("cartsize", cartSize);
 		
 		ModelAndView mv = new ModelAndView("redirect:/myCart");
-		//Check whether products are there for this category or not
 		
 		if (myCartDAO.delete(id) == true) {
 			mv.addObject("cartMessage", "Successfullly deleted from cart");
@@ -118,7 +119,10 @@ public class CartController {
 	
 	@GetMapping("/Thankyou")
 	public String cartCheckout(Model model){
+		String loggedInUser = (String) session.getAttribute("loggedInUser");
 		model.addAttribute("isUserClickedCheckOut", "true");
+		int cartSize = myCartDAO.list(loggedInUser).size();
+		session.setAttribute("cartsize", cartSize);
 		return "Home";
 		
 	}

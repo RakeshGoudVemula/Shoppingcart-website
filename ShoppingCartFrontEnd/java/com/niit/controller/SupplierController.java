@@ -22,7 +22,7 @@ import com.niit.shoppingcart.domain.Supplier;
 
 @Controller
 public class SupplierController {
-	
+
 	@Autowired
 	HttpSession session;
 
@@ -51,16 +51,9 @@ public class SupplierController {
 
 		mv.addObject("isAdminClickedSuppliers", "true");
 		mv.addObject("isAdmin", "true");
-		
-		
+
 		session.setAttribute("supplierList", supplierDAO.list());
 		session.setAttribute("supplier", supplier);
-
-
-		// Before calling save method,check whether the supplier id already
-		// exist in db or not
-
-		// if it does not exist ,then only call save method.
 
 		if (supplierDAO.getSupplierByID(id) != null) {
 			mv.addObject("errorMessage", "Supplier already Exist with the same id" + id);
@@ -80,18 +73,15 @@ public class SupplierController {
 		log.debug("Starting of the method deleteSupplier");
 		log.debug("You are going to delete " + id);
 		ModelAndView mv = new ModelAndView("redirect:/manageSuppliers");
-
-		// check whether products are there for the selected category or not
-
 		int noOfProducts = productDAO.getAllProductsBySupplierId(id).size();
 		if (noOfProducts != 0) {
 			log.debug("Few products are there by this seller, you cannot delete!");
-			session.setAttribute("supplierMessage", "There are " + noOfProducts + " products under this " + id + " seller, you cannot delete!");
+			session.setAttribute("supplierMessage",
+					"There are " + noOfProducts + " products under this " + id + " seller, you cannot delete!");
 			return mv;
 		}
-		 
-		 
-		if (supplierDAO.delete(id)==true) {
+
+		if (supplierDAO.delete(id) == true) {
 			mv.addObject("message", "successfully deleted the supplier");
 		} else {
 			mv.addObject("message", "Not able to delte the supplier");
@@ -113,14 +103,10 @@ public class SupplierController {
 		log.info("You are about to edit a supplier with id : " + id);
 
 		supplier = supplierDAO.getSupplierByID(id);
-
-		// Selected supplier details we have to store in another instance
-		// i.e., ModelAndView instance
 		ModelAndView mv = new ModelAndView("redirect:/manageSuppliers");
 		mv.addObject("selectedSupplier", supplier);
 		session.setAttribute("selectedSupplier", supplier);
-		session.setAttribute("isAdminClickedManageSupplierEdit", "true");	
-
+		session.setAttribute("isAdminClickedManageSupplierEdit", "true");
 
 		log.debug("Ending of method editSupplier");
 
@@ -132,8 +118,7 @@ public class SupplierController {
 			@RequestParam("description") String description) {
 		log.debug("Starting of method updateSupplier");
 		ModelAndView mv = new ModelAndView("redirect:/manageSuppliers");
-		session.setAttribute("isAdminClickedManageSupplierEdit", "false");	
-
+		session.setAttribute("isAdminClickedManageSupplierEdit", "false");
 
 		supplier.setId(id);
 		supplier.setName(name);
@@ -157,10 +142,7 @@ public class SupplierController {
 		session.setAttribute("supplierList", supplierList);
 		session.setAttribute("supplier", supplier);
 
-		// Before calling save method, check whether supplier_id already exists
-		// in db
-		// if it does not exist, then only call save method.
-		session.setAttribute("isAdminClickedManageSupplierEdit", "false");	
+		session.setAttribute("isAdminClickedManageSupplierEdit", "false");
 
 		log.debug("Ending of updateSupplier");
 		return mv;

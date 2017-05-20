@@ -20,9 +20,6 @@ import com.niit.shoppingcart.domain.Product;
 @Controller
 public class HomeController {
 
-	// whenever the user open our Web site ,it should navigate to home page
-	// http://local host:8080/ShoppingCart
-
 	@Autowired
 	HttpSession session;
 	@Autowired
@@ -37,27 +34,20 @@ public class HomeController {
 	@RequestMapping({ "/", "/Home" })
 	public ModelAndView goToHome() {
 		ModelAndView mv = new ModelAndView("Home");
-		// model.addAttribute("message","Thank you for Visiting Shopping Cart
-		// ");
-		mv.addObject("isUserAtRoot" ,"true");
+
+		mv.addObject("isUserAtRoot", "true");
 		mv.addObject("message", "Thank you for visiting shopping cart");
 
-		// get all the categories
 		List<Category> categoryList = categoryDAO.list();
 
-		// Attach
 		session.setAttribute("categoryList", categoryList);
 		session.setAttribute("category", category);
 
-		// get all the categories
 		List<Product> productList = productDAO.list();
 
-		// Attach to session
 		session.setAttribute("productList", productList);
 		session.setAttribute("product", product);
-		// attach
 		return mv;
-		// return "Home";
 	}
 
 	@RequestMapping("/Login")
@@ -77,20 +67,10 @@ public class HomeController {
 		return "Home";
 	}
 
-	
-	/* @RequestMapping("/Home") public String homePage(Model model) {
-	  model.addAttribute("isUserClickedHome", "true"); return "Home"; 
-	  }	 */
-	 
-	 @RequestMapping("/ContactUs")
-		public String contactUsPage(Model model) {
-			model.addAttribute("isUserClickedContactUs", "true");
-			//model.addAttribute("isUserAtRoot", "false");
-			return "Home";
-		}
-	 
-	 
-	 
-	 
-	 
+	@RequestMapping("/ContactUs")
+	public String contactUsPage(Model model) {
+		model.addAttribute("isUserClickedContactUs", "true");
+		return "Home";
+	}
+
 }

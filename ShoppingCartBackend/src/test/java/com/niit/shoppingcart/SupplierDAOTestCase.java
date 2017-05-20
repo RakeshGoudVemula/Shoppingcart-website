@@ -27,10 +27,8 @@ public class SupplierDAOTestCase {
 		context.scan("com.niit");
 		context.refresh();
 
-		// get the SupplierDAO from context
 		SupplierDAO = (SupplierDAO) context.getBean("SupplierDAO");
 
-		// get the supplier from context
 		supplier = (Supplier) context.getBean("supplier");
 	}
 
@@ -39,31 +37,26 @@ public class SupplierDAOTestCase {
 		supplier.setId("1002");
 		supplier.setName("Nokia");
 		supplier.setDescription("standard company");
-		boolean flag =SupplierDAO.save(supplier);
+		boolean flag = SupplierDAO.save(supplier);
 		assertEquals("CreateSupplierTestCase", true, flag);
 
 	}
-	
+
 	@Test
 	public void updateSupplierTestCase() {
 		supplier.setId("1002");
 		supplier.setName("Nokia &samsung");
 		supplier.setDescription("standard companies");
-		boolean flag =SupplierDAO.update(supplier);
+		boolean flag = SupplierDAO.update(supplier);
 		assertEquals("UpdateSupplierTestCase", true, flag);
 
 	}
-	
+
 	@Test
 	public void listCategoryTestCase() {
 
 		int actualsize = SupplierDAO.list().size();
-		// will compare actual and expected.
 		assertEquals(4, actualsize);
 	}
-
-	
-	
-	
 
 }

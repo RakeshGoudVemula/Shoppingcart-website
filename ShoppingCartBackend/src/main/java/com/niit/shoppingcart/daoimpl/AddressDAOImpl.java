@@ -17,9 +17,6 @@ public class AddressDAOImpl implements AddressDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	// write own or user defined constructor with one parameter i.e.,
-	// sessionFactory
-
 	public AddressDAOImpl(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
@@ -29,8 +26,7 @@ public class AddressDAOImpl implements AddressDAO {
 		try {
 			sessionFactory.getCurrentSession().save(address);
 		} catch (Exception e) {
-			// If any exception comes during execute of try block,catch will
-			// execute
+
 			e.printStackTrace();
 			return false;
 		}
@@ -55,8 +51,7 @@ public class AddressDAOImpl implements AddressDAO {
 	}
 
 	public Address getAddressByID(String id) {
-		// TODO Auto-generated method stub
-		return 	(Address)  sessionFactory.getCurrentSession().get(Address.class, id);
+		return (Address) sessionFactory.getCurrentSession().get(Address.class, id);
 	}
 
 	@Override
@@ -64,8 +59,6 @@ public class AddressDAOImpl implements AddressDAO {
 		try {
 			sessionFactory.getCurrentSession().delete(getAddressByID(id));
 		} catch (Exception e) {
-			// if any exception comes during execute of try block, catch will
-			// execute
 			e.printStackTrace();
 			return false;
 		}
@@ -74,8 +67,8 @@ public class AddressDAOImpl implements AddressDAO {
 
 	@Override
 	public Address getAddressByUserid(String userid) {
-		// TODO Auto-generated method stub
-		return 	(Address)  sessionFactory.getCurrentSession().createQuery("from Address where user_id = ?").setString(0, userid).uniqueResult();
+		return (Address) sessionFactory.getCurrentSession().createQuery("from Address where user_id = ?")
+				.setString(0, userid).uniqueResult();
 	}
 
 }

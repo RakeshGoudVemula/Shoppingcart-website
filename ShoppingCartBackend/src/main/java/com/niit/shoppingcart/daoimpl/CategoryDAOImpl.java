@@ -19,9 +19,6 @@ public class CategoryDAOImpl implements CategoryDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	// write own or user defined constructor with one parameter i.e.,
-	// sessionFactory
-
 	public CategoryDAOImpl(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
@@ -31,8 +28,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 		try {
 			sessionFactory.getCurrentSession().save(category);
 		} catch (Exception e) {
-			// If any exception comes during execute of try block,catch will
-			// execute
+
 			e.printStackTrace();
 			return false;
 		}
@@ -71,7 +67,6 @@ public class CategoryDAOImpl implements CategoryDAO {
 	}
 
 	public Category getCategoryByID(String id) {
-		// select * from category where id=?
 
 		return (Category) sessionFactory.getCurrentSession().get(Category.class, id);
 

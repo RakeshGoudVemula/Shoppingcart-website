@@ -50,11 +50,8 @@ public class ProductController {
 	@Autowired
 	HttpSession session;
 
-	// Setting Path to store images
 	private String path = "E://Workspace//ShoppingCartFrontEnd//src//main//webapp//resources//img";
-	// private String path =
 
-	// Add or Update Product
 	@PostMapping("/manage_product_add")
 	public String addPorduct(@ModelAttribute("product") Product product, @RequestParam("image") MultipartFile file,
 			Model model) {
@@ -64,13 +61,10 @@ public class ProductController {
 
 		product.setCategory(category);
 		product.setCategory_id(category.getId());
-		
-		
+
 		product.setSupplier(supplier);
 		product.setSupplier_id(supplier.getId());
-		
-		
-		//product.setId(Util.removeComman(product.getId()));
+
 		productDAO.saveOrUpdate(product);
 
 		FileUtil.upload(path, file, product.getId() + ".jpg");
@@ -91,13 +85,13 @@ public class ProductController {
 	public String manageProducts(Model model) {
 		log.debug("Starting of the method manageProducts");
 		model.addAttribute("isAdminClickedProducts", "true");
-		model.addAttribute("isAdmin","true");
-		model.addAttribute("product",product);
-		model.addAttribute("productList",productDAO.list());
+		model.addAttribute("isAdmin", "true");
+		model.addAttribute("product", product);
+		model.addAttribute("productList", productDAO.list());
 		model.addAttribute("supplier", supplier);
-		model.addAttribute("supplierList",supplierDAO.list());
-		model.addAttribute("category",category);
-		model.addAttribute("categoryList",categoryDAO.list());
+		model.addAttribute("supplierList", supplierDAO.list());
+		model.addAttribute("category", category);
+		model.addAttribute("categoryList", categoryDAO.list());
 		log.debug("Ending of the method manageProducts");
 		return "Home";
 	}
@@ -127,8 +121,6 @@ public class ProductController {
 		log.debug("Ending of the method editProduct");
 		return "redirect:/manageProducts";
 	}
-	
-	
 
 	// Get select product details
 	@RequestMapping("/manage-product-get/{id}")
@@ -138,15 +130,6 @@ public class ProductController {
 		redirectAttributes.addFlashAttribute("selectedProduct", productDAO.getProductById(id));
 		log.debug("ending of method getSelectedProduct");
 		return mv;
-	}	
-	
-	@RequestMapping("/ProductDisplay/{id}")
-	public String viewProduct(@PathVariable("id") String id, Model model) {
-		session.setAttribute("selectedProduct", productDAO.getProductById(id));
-		model.addAttribute("isUserClickedSelectedProduct", "true");
-		return "redirect:/ProductDisplay";
 	}
 
-	
-	
 }

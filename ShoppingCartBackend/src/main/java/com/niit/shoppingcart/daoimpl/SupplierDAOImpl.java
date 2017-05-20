@@ -18,9 +18,6 @@ public class SupplierDAOImpl implements SupplierDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	// write own or user defined constructor with one parameter i.e.,
-	// sessionFactory
-
 	public SupplierDAOImpl(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
@@ -30,8 +27,7 @@ public class SupplierDAOImpl implements SupplierDAO {
 		try {
 			sessionFactory.getCurrentSession().save(supplier);
 		} catch (Exception e) {
-			// If any exception comes during execute of try block,catch will
-			// execute
+
 			e.printStackTrace();
 			return false;
 		}
@@ -42,8 +38,7 @@ public class SupplierDAOImpl implements SupplierDAO {
 		try {
 			sessionFactory.getCurrentSession().update(supplier);
 		} catch (Exception e) {
-			// If any exception comes during execute of try block,catch will
-			// execute
+
 			e.printStackTrace();
 			return false;
 		}
@@ -60,7 +55,6 @@ public class SupplierDAOImpl implements SupplierDAO {
 	}
 
 	public Supplier getSupplierByName(String name) {
-		// TODO Auto-generated method stub
 		return (Supplier) sessionFactory.getCurrentSession().createQuery("from Supplier where name = ?")
 				.setString(0, name).uniqueResult();
 	}
@@ -70,8 +64,6 @@ public class SupplierDAOImpl implements SupplierDAO {
 		try {
 			sessionFactory.getCurrentSession().delete(getSupplierByID(id));
 		} catch (Exception e) {
-			// if any excpetion comes during execute of try block, catch will
-			// excute
 			e.printStackTrace();
 			return false;
 		}

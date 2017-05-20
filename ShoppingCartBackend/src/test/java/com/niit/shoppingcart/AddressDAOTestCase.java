@@ -20,8 +20,6 @@ public class AddressDAOTestCase {
 	static AddressDAO addressDAO;
 	@Autowired
 	static Address address;
-	
-	
 
 	@BeforeClass
 	public static void initialize() {
@@ -29,15 +27,13 @@ public class AddressDAOTestCase {
 		context.scan("com.niit");
 		context.refresh();
 
-		// get the SupplierDAO from context
 		addressDAO = (AddressDAO) context.getBean("addressDAO");
 
-		// get the supplier from context
 		address = (Address) context.getBean("address");
 	}
+
 	@Test
-	public void createAddressTestCase()
-	{
+	public void createAddressTestCase() {
 		address.setId("497");
 		address.setUser_id("rakesh");
 		address.setH_no("1148");
@@ -45,12 +41,12 @@ public class AddressDAOTestCase {
 		address.setCity("Hyderabad");
 		address.setCountry("India");
 		address.setPin("500074");
-		boolean flag =addressDAO.save(address);
+		boolean flag = addressDAO.save(address);
 		assertEquals("CreateSupplierTestCase", true, flag);
 	}
+
 	@Test
-	public void updateAddressTestCase()
-	{
+	public void updateAddressTestCase() {
 		address.setId("497");
 		address.setUser_id("rakesh");
 		address.setH_no("1148");
@@ -58,13 +54,8 @@ public class AddressDAOTestCase {
 		address.setCity("Hyderabad");
 		address.setCountry("India");
 		address.setPin("500074");
-		boolean flag =addressDAO.update(address);
+		boolean flag = addressDAO.update(address);
 		assertEquals("CreateSupplierTestCase", true, flag);
 	}
-	
-	
-	
-	
-	
 
 }

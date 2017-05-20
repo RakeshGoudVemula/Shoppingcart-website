@@ -39,7 +39,7 @@ body {
 				<!-- User -->
 				<c:if test="${isUser=='true'}">
 					<li><a href="myCart">
-							<i class="fa fa-shopping-cart" aria-hidden="true"></i> My Cart <span
+							<i class="fa fa-shopping-cart" aria-hidden="true"></i> My Cart <span class="badge">${cartsize}</span> <span
 								class="label label-warning">${cartSize}</span>
 						</a></li>
 					<li><a href="secure_logout">

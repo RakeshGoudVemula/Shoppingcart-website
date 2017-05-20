@@ -18,9 +18,6 @@ public class MyCartDAOImpl implements MyCartDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	// write own or user defined constructor with one parameter i.e.,
-	// sessionFactory
-
 	public MyCartDAOImpl(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
@@ -31,8 +28,7 @@ public class MyCartDAOImpl implements MyCartDAO {
 		try {
 			sessionFactory.getCurrentSession().save(myCart);
 		} catch (Exception e) {
-			// if any excpetion comes during execute of try block, catch will
-			// excute
+
 			e.printStackTrace();
 			return false;
 		}
@@ -45,8 +41,7 @@ public class MyCartDAOImpl implements MyCartDAO {
 		try {
 			sessionFactory.getCurrentSession().update(myCart);
 		} catch (Exception e) {
-			// if any excpetion comes during execute of try block, catch will
-			// excute
+
 			e.printStackTrace();
 			return false;
 		}
@@ -69,7 +64,6 @@ public class MyCartDAOImpl implements MyCartDAO {
 
 	@Override
 	public List<MyCart> list(String userID) {
-		// TODO Auto-generated method stub
 		return sessionFactory.getCurrentSession().createQuery("from MyCart where user_id=?").setString(0, userID)
 				.list();
 	}

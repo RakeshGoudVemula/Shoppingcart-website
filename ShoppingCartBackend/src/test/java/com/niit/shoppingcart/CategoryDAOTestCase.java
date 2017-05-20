@@ -17,8 +17,6 @@ import com.niit.shoppingcart.domain.User;
 
 public class CategoryDAOTestCase {
 
-	// because we used Annotations @Repository,@Component,@Configuration
-
 	@Autowired
 	static AnnotationConfigApplicationContext context;
 
@@ -33,15 +31,13 @@ public class CategoryDAOTestCase {
 		context.scan("com.niit");
 		context.refresh();
 
-		// get the userDAO from context
 		CategoryDAO = (CategoryDAO) context.getBean("CategoryDAO");
 
-		// get the user from context
 		category = (Category) context.getBean("category");
 
 	}
 
-/*	@Test
+	@Test
 	public void createCategoryTestCase() {
 
 		category.setId("2028");
@@ -51,28 +47,5 @@ public class CategoryDAOTestCase {
 		assertEquals("CreatecategoryTestCase", true, flag);
 
 	}
-
-	@Test
-	public void updateCategoryTestCase() {
-		category.setId("2025");
-		category.setName("Electronics & shoes");
-		category.setDescription("all types of electronics&shoes");
-		boolean flag = CategoryDAO.update(category);
-		assertEquals("CreatecategoryTestCase", true, flag);
-	}
-
-	@Test
-	public void listCategoryTestCase() {
-
-		int actualsize = CategoryDAO.list().size();
-		// will compare actual and expected.
-		assertEquals(4, actualsize);
-	}
-
-	@Test
-	public void getAllCategoriesTestCase() {
-		List<Category> categories = CategoryDAO.list();
-	}*/
-	
 
 }

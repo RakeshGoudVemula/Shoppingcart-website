@@ -5,8 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>eShopee</title>
-
-
 </head>
 <body>
 		<form action="register">
@@ -58,14 +56,7 @@
 							<input type="submit" name="submit" id="submit" value="Submit"
 									class="btn btn-info pull-right">
 						</div>
-						
 						</div>
-
-
-
 	</form>
-	
-
-
 </body>
 </html>

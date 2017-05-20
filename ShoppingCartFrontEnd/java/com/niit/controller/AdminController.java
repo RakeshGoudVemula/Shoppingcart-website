@@ -34,18 +34,6 @@ public class AdminController {
 
 		ModelAndView mv = new ModelAndView("Home");
 
-		/*if (session.getAttribute("LoggedInUserID") == null) {
-			// user is not logged in
-			mv.addObject("message", "please login to do these opearations");
-			return mv;
-		}
-
-		if (session.getAttribute("role").equals("Admin")) {
-
-			mv.addObject("message", "you are not admin,cannot perform these operations");
-			return mv;
-
-		}*/
 		mv.addObject("isAdminClickedCategories", "true");
 		mv.addObject("isAdmin", "true");
 
